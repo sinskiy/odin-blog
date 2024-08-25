@@ -1,6 +1,5 @@
-import "./App.css";
 import useFetch from "../../hooks";
-import Header from "../Header/Header";
+import Header from "../../components/Header";
 
 function App() {
   const { data, loading, error } = useFetch("http://localhost:3000/api/posts/");
