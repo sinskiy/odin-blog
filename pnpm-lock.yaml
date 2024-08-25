@@ -27,7 +27,7 @@ importers:
         specifier: ^15.9.0
         version: 15.9.0
 
-  backend:
+  packages/backend:
     dependencies:
       '@prisma/client':
         specifier: ^5.18.0
@@ -48,7 +48,7 @@ importers:
         specifier: ^5.18.0
         version: 5.18.0
 
-  frontend:
+  packages/frontend:
     dependencies:
       react:
         specifier: ^18.3.1
