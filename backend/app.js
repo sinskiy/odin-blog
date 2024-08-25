@@ -1,9 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
+const rootRouter = require("./routes");
 const app = express();
 
-app.get("/", (req, res) => res.send("Hello, world!"));
+app.use("/api", rootRouter);
 
 app.listen(
   process.env.PORT,
