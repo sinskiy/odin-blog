@@ -6,8 +6,8 @@
     "@prisma/client": "^5.18.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
     "express": "^4.19.2",
     "prisma": "^5.18.0"
-  },
-  "packageManager": "pnpm@9.8.0+sha512.8e4c3550fb500e808dbc30bb0ce4dd1eb614e30b1c55245f211591ec2cdf9c611cabd34e1364b42f564bd54b3945ed0f49d61d1bbf2ec9bd74b866fcdc723276"
+  }
 }
