@@ -74,6 +74,7 @@ async function postDelete(req, res, next) {
         id: id,
       },
     });
+    res.json(post);
   } catch (err) {
     next(err);
   }
