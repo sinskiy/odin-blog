@@ -7,7 +7,9 @@ const {
   postPut,
   postDelete,
 } = require("../controllers/postsController");
+const commentsRouter = require("../routes/commentsRouter");
 const router = Router();
+router.use("/:postId/comments", commentsRouter);
 
 router.get("/", postsGet);
 router.post("/", isUser, postsPost);
