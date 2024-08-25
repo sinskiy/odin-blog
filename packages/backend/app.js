@@ -12,7 +12,7 @@ app.use("/api", rootRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
-  res.sendStatus(500);
+  res.status(500).json({ error: err });
 });
 
 app.listen(
