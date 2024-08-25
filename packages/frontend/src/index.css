@@ -85,7 +85,8 @@ a:active {
   transform: scale(0.9);
 }
 
-button {
+button,
+.link-button {
   padding: 0.5rem 1rem;
 
   border-radius: var(--rounded);
@@ -100,5 +101,10 @@ a {
   color: var(--primary);
 }
 a:hover {
+  text-decoration: none;
+}
+
+/* global classes */
+.link-button {
   text-decoration: none;
 }
