@@ -5,7 +5,9 @@ function isUser(req, res, next) {
   const [bearer, token] = bearerHeader.split(" ");
   try {
     const user = jwt.verify(token, process.env.SECRET);
-    res.json(user);
+    if (user) {
+      next();
+    }
   } catch (err) {
     res.sendStatus(401);
   }
