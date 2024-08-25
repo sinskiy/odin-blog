@@ -1,5 +1,29 @@
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const prisma = require("../prisma");
+
+async function loginPost(req, res, next) {
+  const { username, password } = req.body;
+  try {
+    const user = await getUserByUsername(username);
+    if (!user) {
+      return res.status(400).json({ message: "Incorrect username." });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(400).json({ message: "Incorrect password." });
+    }
+    const token = loginSign(user);
+    res.json({ token: token });
+  } catch (err) {
+    next(err);
+  }
+}
+function loginSign(user) {
+  const token = jwt.sign(user, process.env.SECRET);
+  return token;
+}
 
 async function signupPost(req, res, next) {
   const { username, password } = req.body;
@@ -16,7 +40,6 @@ async function signupPost(req, res, next) {
 
     res.json(user);
   } catch (err) {
-    //  TODO: set up error route
     next(err);
   }
 }
@@ -37,32 +60,4 @@ async function createUser(username, password) {
   return user;
 }
 
-function isUser(req, res, next) {
-  if (!req.user) {
-    res.sendStatus(403);
-  }
-  next();
-}
-
-async function isAuthor(req, res, next) {
-  if (!req.user) {
-    return res.sendStatus(403);
-  }
-
-  const { postId } = req.params;
-  try {
-    const post = await prisma.post.findUnique({
-      where: {
-        id: Number(postId),
-      },
-    });
-    // TODO: finish later
-    // * post.authors doesn't show up
-    // * if (post.)
-  } catch (err) {
-    //  TODO: set up error route
-    next(err);
-  }
-}
-
-module.exports = { signupPost, isUser };
+module.exports = { loginPost, signupPost };
