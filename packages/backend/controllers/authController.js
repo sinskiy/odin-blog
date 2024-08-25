@@ -7,12 +7,12 @@ async function loginPost(req, res, next) {
   try {
     const user = await getUserByUsername(username);
     if (!user) {
-      return res.status(400).json({ error: "Incorrect username." });
+      return res.status(400).send("Incorrect username.");
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(400).json({ error: "Incorrect password." });
+      return res.status(400).send("Incorrect password.");
     }
     const token = loginSign(user);
     res.json({ token: token });
@@ -30,9 +30,7 @@ async function signupPost(req, res, next) {
   try {
     const previousUser = await getUserByUsername(username);
     if (previousUser !== null) {
-      return res.status(400).json({
-        error: "Username already exists.",
-      });
+      return res.status(400).send("Username already exists.");
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

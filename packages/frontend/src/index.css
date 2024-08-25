@@ -88,6 +88,12 @@ button:active,
 a:active {
   transform: scale(0.9);
 }
+button:disabled,
+a:disabled {
+  pointer-events: none;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
 
 button,
 .link-button {
