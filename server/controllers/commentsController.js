@@ -34,36 +34,4 @@ async function commentsPost(req, res, next) {
   }
 }
 
-async function commentPut(req, res, next) {
-  const { commentId } = req.params;
-  const { text } = req.body;
-  try {
-    const comment = await prisma.comment.update({
-      data: {
-        text: text,
-      },
-      where: {
-        id: Number(commentId),
-      },
-    });
-    res.json(comment);
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function commentDelete(req, res, next) {
-  const { commentId } = req.params;
-  try {
-    const comment = await prisma.comment.delete({
-      where: {
-        id: Number(commentId),
-      },
-    });
-    res.json(comment);
-  } catch (err) {
-    next(err);
-  }
-}
-
-export { commentsGet, commentsPost, commentPut, commentDelete };
+export { commentsGet, commentsPost };
