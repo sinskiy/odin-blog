@@ -34,3 +34,7 @@ select {
   color: inherit;
   font: inherit;
 }
+
+textarea {
+  resize: vertical;
+}

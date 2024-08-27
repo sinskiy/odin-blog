@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import classes from "./Post.module.css";
-import { bool, func, number, shape, string } from "prop-types";
+import { bool, func } from "prop-types";
 import Comments from "./Comments";
 import useFetch from "../hooks/useFetch";
-import { jsonOptions } from "../const";
+import { jsonOptions, postType } from "../const";
 import { useContext, useEffect } from "react";
 import UserContext from "../context/UserContext";
 
@@ -51,20 +51,19 @@ const Post = ({ post, firePosts, preview = true, showPublish }) => {
           </button>
         )}
         {preview && (
-          <Link to={`${post.id}`} aria-label="read" className={classes.link} />
+          <Link
+            to={showPublish ? `/${post.id}/edit` : `/${post.id}`}
+            aria-label="read"
+            className={classes.link}
+          />
         )}
       </article>
       {!preview && <Comments postId={post.id} />}
     </>
   );
 };
-
 Post.propTypes = {
-  post: shape({
-    id: number.isRequired,
-    title: string.isRequired,
-    created_at: string.isRequired,
-  }),
+  post: postType,
   firePosts: func,
   preview: bool,
   showPublish: bool,

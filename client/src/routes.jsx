@@ -1,3 +1,4 @@
+import Edit from "./routes/Edit";
 import Login from "./routes/Login";
 import Post from "./routes/Post";
 import Posts from "./routes/Posts";
@@ -25,6 +26,10 @@ const routes = [
       {
         path: "/:postId",
         element: <Post />,
+      },
+      {
+        path: "/:postId/edit",
+        element: <Edit />,
       },
     ],
   },

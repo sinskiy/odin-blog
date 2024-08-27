@@ -1,18 +1,17 @@
 import { bool, node } from "prop-types";
 import classes from "./Form.module.css";
 
-const Form = ({ children, isLoading = false, compact = false, ...props }) => {
+const Form = ({ children, isLoading = false, ...props }) => {
   return (
     <form className={classes.form} {...props}>
       <section className={classes.formMain}>{children}</section>
-      <FormNav isLoading={isLoading} compact={compact} />
+      <FormNav isLoading={isLoading} />
     </form>
   );
 };
 Form.propTypes = {
   children: node,
   isLoading: bool,
-  compact: bool,
 };
 
 const FormNav = ({ isLoading }) => {
@@ -30,7 +29,6 @@ const FormNav = ({ isLoading }) => {
 };
 FormNav.propTypes = {
   isLoading: bool,
-  compact: bool,
 };
 
 export default Form;
