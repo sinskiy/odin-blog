@@ -22,14 +22,13 @@ export async function signupPost(req, res, next) {
     }
 
     const hashedPassword = await bcrypt.hash(username, 5);
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
         username: username,
         password: hashedPassword,
       },
     });
-    res.json({ user });
-    // ! TODO: send OK
+    res.sendStatus(200);
   } catch (err) {
     next(err);
   }
