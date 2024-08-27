@@ -27,6 +27,7 @@ const Nav = () => {
           <button className="primary small" onClick={logout}>
             log out
           </button>
+          {user.author && <Link to={`/authors/${user.author.id}`}>write</Link>}
         </>
       ) : (
         <>
