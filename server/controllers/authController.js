@@ -21,7 +21,7 @@ export async function signupPost(req, res, next) {
       return res.status(400).json({ error: "Username is not unique." });
     }
 
-    const hashedPassword = await bcrypt.hash(username, 5);
+    const hashedPassword = await bcrypt.hash(password, 5);
     const user = await prisma.user.create({
       data: {
         username: username,
@@ -59,7 +59,6 @@ export async function loginPost(req, res, next) {
     }
 
     const match = await bcrypt.compare(password, user.password);
-    console.log(password, user.password, match);
     if (!match) {
       return res.status(400).json({
         error: "Incorrect password.",
