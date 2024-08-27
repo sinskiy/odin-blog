@@ -1,6 +1,6 @@
 import prisma from "../prisma/index.js";
 
-async function postsGet(req, res, next) {
+export async function postsGet(req, res, next) {
   try {
     const posts = await prisma.post.findMany({
       where: {
@@ -20,7 +20,7 @@ async function postsGet(req, res, next) {
   }
 }
 
-async function postsPost(req, res, next) {
+export async function postsPost(req, res, next) {
   const { authorId, title, description, text } = req.body;
   try {
     const post = await prisma.post.create({
@@ -37,7 +37,7 @@ async function postsPost(req, res, next) {
   }
 }
 
-async function postGet(req, res, next) {
+export async function postGet(req, res, next) {
   const { postId } = req.params;
   try {
     const post = await prisma.post.findUniqueOrThrow({
@@ -59,7 +59,7 @@ async function postGet(req, res, next) {
   }
 }
 
-async function postPut(req, res, next) {
+export async function postPut(req, res, next) {
   const { postId } = req.params;
   const { title, description, text } = req.body;
   try {
@@ -79,7 +79,7 @@ async function postPut(req, res, next) {
   }
 }
 
-async function postPublicityPatch(req, res, next) {
+export async function postPublicityPatch(req, res, next) {
   const { postId } = req.params;
   const { postPublic } = req.body;
   try {
@@ -97,7 +97,7 @@ async function postPublicityPatch(req, res, next) {
   }
 }
 
-async function postDelete(req, res, next) {
+export async function postDelete(req, res, next) {
   const { postId } = req.params;
   try {
     const post = await prisma.post.delete({
@@ -110,12 +110,3 @@ async function postDelete(req, res, next) {
     next(err);
   }
 }
-
-export {
-  postsGet,
-  postsPost,
-  postGet,
-  postPut,
-  postPublicityPatch,
-  postDelete,
-};

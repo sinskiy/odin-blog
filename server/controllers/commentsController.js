@@ -1,6 +1,6 @@
 import prisma from "../prisma/index.js";
 
-async function commentsGet(req, res, next) {
+export async function commentsGet(req, res, next) {
   const { postId } = req.params;
   try {
     const comments = await prisma.comment.findMany({
@@ -17,7 +17,7 @@ async function commentsGet(req, res, next) {
   }
 }
 
-async function commentsPost(req, res, next) {
+export async function commentsPost(req, res, next) {
   const { postId } = req.params;
   const { userId, text } = req.body;
   try {
@@ -33,5 +33,3 @@ async function commentsPost(req, res, next) {
     next(err);
   }
 }
-
-export { commentsGet, commentsPost };
