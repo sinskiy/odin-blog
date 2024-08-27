@@ -80,13 +80,18 @@ export async function authGet(req, res, next) {
   try {
     const bearerHeader = req.header("Authorization");
     const token = bearerHeader.split(" ")[1];
+    console.log(token);
 
     const user = jwt.verify(token, process.env.SECRET);
 
     // TODO: add to locals in the PERP template
     res.locals.user = user;
-    res.json({ user: user });
+    next();
   } catch (err) {
     res.status(401).json({ error: "Unauthorized." });
   }
+}
+
+export async function userGet(req, res) {
+  res.json({ user: res.locals.user });
 }
