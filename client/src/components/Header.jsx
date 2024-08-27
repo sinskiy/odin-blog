@@ -24,7 +24,7 @@ const Nav = () => {
       {user ? (
         <>
           <p>{user.username}</p>
-          <button className="primary" onClick={logout}>
+          <button className="primary small" onClick={logout}>
             log out
           </button>
         </>

@@ -15,21 +15,16 @@ Form.propTypes = {
   compact: bool,
 };
 
-const FormNav = ({ isLoading, compact }) => {
+const FormNav = ({ isLoading }) => {
   return (
     <section className={classes.formNav}>
-      <button
-        type="submit"
-        className={`primary ${compact ? "small" : ""}`}
-        disabled={isLoading}
-      >
+      <button type="submit" className="primary" disabled={isLoading}>
         submit
       </button>
-      {!compact && (
-        <button type="reset" className="error" disabled={isLoading}>
-          reset
-        </button>
-      )}
+
+      <button type="reset" className="error" disabled={isLoading}>
+        reset
+      </button>
     </section>
   );
 };

@@ -97,7 +97,7 @@ a:hover {
 
 /* global layout styling */
 body {
-  padding: 2rem;
+  padding: 2rem 1rem;
   max-width: 1024px;
   margin: auto;
 }

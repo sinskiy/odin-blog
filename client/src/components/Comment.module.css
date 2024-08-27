@@ -2,7 +2,7 @@
   padding: 1rem;
   background-color: var(--surface);
   border-radius: var(--rounded-card);
-  min-width: 300px;
+  width: 100%;
 }
 
 .username {
