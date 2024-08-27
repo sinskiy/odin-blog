@@ -83,6 +83,8 @@ export async function authGet(req, res, next) {
 
     const user = jwt.verify(token, process.env.SECRET);
 
+    // TODO: add to locals in the PERP template
+    res.locals.user = user;
     res.json({ user: user });
   } catch (err) {
     res.status(401).json({ error: "Unauthorized." });
