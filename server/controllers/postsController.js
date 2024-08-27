@@ -61,37 +61,20 @@ export async function postGet(req, res, next) {
 
 export async function postPut(req, res, next) {
   const { postId } = req.params;
-  const { title, description, text } = req.body;
+  const { title, description, text, postPublic } = req.body;
   try {
     const post = await prisma.post.update({
       data: {
         title,
         description,
         text,
-      },
-      where: {
-        id: Number(postId),
-      },
-    });
-    res.json(post);
-  } catch (err) {
-    next(err);
-  }
-}
-
-export async function postPublicityPatch(req, res, next) {
-  const { postId } = req.params;
-  const { postPublic } = req.body;
-  try {
-    await prisma.post.update({
-      data: {
         public: Boolean(postPublic),
       },
       where: {
         id: Number(postId),
       },
     });
-    res.sendStatus(200);
+    res.json(post);
   } catch (err) {
     next(err);
   }

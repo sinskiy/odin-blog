@@ -7,8 +7,12 @@ export default function Posts() {
   // TODO: error handling
   const { authorId } = useParams();
   const { data: posts, fire, isLoading } = useFetch();
+  const fireFunc = () => {
+    if (authorId) return fire(`/authors/${authorId}`);
+    return fire("/posts");
+  };
   useEffect(() => {
-    authorId ? fire(`/authors/${authorId}`) : fire("/posts");
+    fireFunc();
   }, []);
 
   if (isLoading) return <p>loading...</p>;
@@ -19,7 +23,12 @@ export default function Posts() {
           <>
             <h1>{authorId ? "your " : ""}posts</h1>
             {posts.map((post) => (
-              <PostPreview key={post.id} post={post} />
+              <PostPreview
+                key={post.id}
+                post={post}
+                firePosts={fireFunc}
+                showPublish={authorId !== undefined}
+              />
             ))}
           </>
         ) : (

@@ -4,7 +4,7 @@ import InputField from "./InputField";
 import useFetch from "../hooks/useFetch";
 import { useContext, useEffect } from "react";
 import UserContext from "../context/UserContext";
-import { postOptions } from "../const";
+import { jsonOptions } from "../const";
 
 const NewComment = ({ postId, fireComments }) => {
   const { user, token } = useContext(UserContext);
@@ -16,7 +16,7 @@ const NewComment = ({ postId, fireComments }) => {
     fire(`/posts/${postId}/comments`, {
       headers: {
         Authorization: `Bearer ${token}`,
-        ...postOptions.headers,
+        ...jsonOptions("post").headers,
       },
       body: JSON.stringify({
         text: formData.get("text"),

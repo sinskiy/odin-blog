@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postOptions } from "../const";
+import { jsonOptions } from "../const";
 
 export default function useFetch(method = "get") {
   const [data, setData] = useState(null);
@@ -10,12 +10,13 @@ export default function useFetch(method = "get") {
     setIsLoading(true);
     try {
       const fetchOptions =
-        method === "post"
+        method !== "get"
           ? {
-              ...postOptions,
+              ...jsonOptions(method),
               ...options,
             }
           : options;
+      console.log(fetchOptions);
       const response = await fetch(
         import.meta.env.VITE_API_URL + route,
         fetchOptions,

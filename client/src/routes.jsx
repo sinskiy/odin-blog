@@ -17,10 +17,10 @@ const routes = [
         path: "/login",
         element: <Login />,
       },
-      { index: true, element: <Posts /> },
+      { index: true, element: <Posts key={0} /> },
       {
         path: "/authors/:authorId",
-        element: <Posts />,
+        element: <Posts key={1} />,
       },
       {
         path: "/:postId",
