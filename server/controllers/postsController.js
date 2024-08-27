@@ -79,6 +79,24 @@ async function postPut(req, res, next) {
   }
 }
 
+async function postPublicityPatch(req, res, next) {
+  const { postId } = req.params;
+  const { postPublic } = req.body;
+  try {
+    await prisma.post.update({
+      data: {
+        public: Boolean(postPublic),
+      },
+      where: {
+        id: Number(postId),
+      },
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function postDelete(req, res, next) {
   const { postId } = req.params;
   try {
@@ -93,4 +111,11 @@ async function postDelete(req, res, next) {
   }
 }
 
-export { postsGet, postsPost, postGet, postPut, postDelete };
+export {
+  postsGet,
+  postsPost,
+  postGet,
+  postPut,
+  postPublicityPatch,
+  postDelete,
+};
