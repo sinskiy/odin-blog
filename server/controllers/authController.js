@@ -79,7 +79,6 @@ export async function authGet(req, res, next) {
   try {
     const bearerHeader = req.header("Authorization");
     const token = bearerHeader.split(" ")[1];
-    console.log(token);
 
     const user = jwt.verify(token, process.env.SECRET);
 
