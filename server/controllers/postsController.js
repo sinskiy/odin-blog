@@ -41,6 +41,13 @@ async function postGet(req, res, next) {
       where: {
         id: Number(postId),
       },
+      include: {
+        author: {
+          include: {
+            user: true,
+          },
+        },
+      },
     });
     res.json(post);
   } catch (err) {
