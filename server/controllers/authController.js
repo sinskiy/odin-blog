@@ -48,6 +48,9 @@ export async function loginPost(req, res, next) {
       where: {
         username: username,
       },
+      include: {
+        author: true,
+      },
     });
     if (!user) {
       return res.status(400).json({
@@ -63,7 +66,7 @@ export async function loginPost(req, res, next) {
     }
 
     const token = jwt.sign(
-      { id: user.id, username: user.username },
+      { id: user.id, username: user.username, author: user.author },
       process.env.SECRET,
       {
         expiresIn: "24h",
