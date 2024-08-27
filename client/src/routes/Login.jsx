@@ -3,7 +3,7 @@ import Form from "../components/Form";
 import InputField from "../components/InputField";
 import useFetch from "../hooks/useFetch";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../context/UserContext";
+import UserContext from "../context/UserContext";
 
 export default function Login() {
   const { data, error, isLoading, fire } = useFetch("post");

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
-import { UserContext } from "../context/UserContext";
+import UserContext from "../context/UserContext";
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
@@ -22,7 +22,7 @@ function Root() {
   }, [data]);
 
   return (
-    <UserContext.Provider value={{ user, setToken }}>
+    <UserContext.Provider value={{ user, token, setToken }}>
       <Header />
       <main>
         <Outlet />

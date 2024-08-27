@@ -3,19 +3,22 @@ import classes from "./Comments.module.css";
 import useFetch from "../hooks/useFetch";
 import { useEffect } from "react";
 import Comment from "./Comment";
+import NewComment from "./NewComment";
 
 const Comments = ({ postId }) => {
   // TODO: error handling
   const { data: comments, fire } = useFetch();
+
+  const commentsUrl = `/posts/${postId}/comments`;
   useEffect(() => {
-    fire(`/posts/${postId}/comments`);
+    fire(commentsUrl);
   }, []);
-  console.log(comments);
   return (
-    <section className={classes.comments}>
+    <section className={classes.commentsContainer}>
       <h3>comments</h3>
+      <NewComment postId={postId} fireComments={() => fire(commentsUrl)} />
       {comments?.length ? (
-        <ul role="list">
+        <ul role="list" className={classes.comments}>
           {comments.map((comment) => (
             <li key={comment.id}>
               <Comment comment={comment} />

@@ -91,6 +91,9 @@ a:hover {
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
+.small {
+  padding: 0.5rem 1rem;
+}
 
 /* global layout styling */
 body {
@@ -110,6 +113,7 @@ h3 {
 }
 .text {
   line-height: 1.5;
+  max-width: 80ch;
 }
 
 /* dark mode variables */
