@@ -101,13 +101,15 @@ body {
 h1 {
   margin-bottom: 1rem;
 }
+h3 {
+  margin-bottom: 0.5rem;
+}
 .centered-section {
   width: fit-content;
   margin: auto;
 }
 .text {
   line-height: 1.5;
-  color: var(--text-variation);
 }
 
 /* dark mode variables */
