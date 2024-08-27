@@ -5,7 +5,6 @@ import {
   postsPost,
   postGet,
   postPut,
-  postDelete,
 } from "../controllers/postsController.js";
 import commentsRouter from "./commentsRouter.js";
 const router = Router();
@@ -17,6 +16,5 @@ router.post("/", authGet, postsPost);
 router.get("/:postId", postGet);
 
 router.put("/:postId", authGet, postPut);
-router.delete("/:postId", authGet, postDelete);
 
 export default router;

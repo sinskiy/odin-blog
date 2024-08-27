@@ -78,17 +78,3 @@ export async function postPut(req, res, next) {
     next(err);
   }
 }
-
-export async function postDelete(req, res, next) {
-  const { postId } = req.params;
-  try {
-    const post = await prisma.post.delete({
-      where: {
-        id: Number(postId),
-      },
-    });
-    res.json(post);
-  } catch (err) {
-    next(err);
-  }
-}
