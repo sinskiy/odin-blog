@@ -35,6 +35,7 @@ async function postsPost(req, res, next) {
 }
 
 async function postGet(req, res, next) {
+  // TODO: only published
   const { postId } = req.params;
   try {
     const post = await prisma.post.findUniqueOrThrow({

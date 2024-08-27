@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <Link to="/" aria-label="home" className={classes.logo}>
-        PERP
+        blog
       </Link>
       <Nav />
     </header>
