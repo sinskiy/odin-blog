@@ -7,6 +7,9 @@ async function commentsGet(req, res, next) {
       where: {
         postId: Number(postId),
       },
+      include: {
+        user: true,
+      },
     });
     res.json(comments);
   } catch (err) {
