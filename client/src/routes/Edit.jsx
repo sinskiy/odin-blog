@@ -13,17 +13,15 @@ const Edit = () => {
 
   const { user, token } = useContext(UserContext);
 
-  // TODO: error handling
-  const { data: post, fire, isLoading } = useFetch();
+  const { data: post, fire, error, isLoading } = useFetch();
   useEffect(() => {
     if (postId) {
       fire(`/posts/${postId}`);
     }
   }, []);
 
-  // TODO: error handling
   const method = postId ? "put" : "post";
-  const { data: newPost, fire: fireUpdate } = useFetch(method);
+  const { data: newPost, error: newError, fire: fireUpdate } = useFetch(method);
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -50,11 +48,13 @@ const Edit = () => {
   }, [newPost]);
 
   if (isLoading) return <p>loading...</p>;
+  if (error) return <h1>error: {error}</h1>;
   return (
     <section>
       <h1>
         {post ? "edit" : "new"} {post ? post.title : "post"}
       </h1>
+      {newError && <h2>{newError}</h2>}
       <Form method="post" onSubmit={handleSubmit}>
         <InputField
           label="title"

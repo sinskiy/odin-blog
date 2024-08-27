@@ -5,14 +5,13 @@ import UserPost from "../components/Post";
 
 export default function Post() {
   const { postId } = useParams();
-  // TODO: error handling
-  const { data: post, fire, isLoading } = useFetch();
+  const { data: post, isLoading, error, fire } = useFetch();
   useEffect(() => {
     fire(`/posts/${postId}`);
   }, []);
 
   if (isLoading) return <p>loading...</p>;
-  // TODO: better 404 handling
+  if (error) return <h1>error: {error}</h1>;
   return (
     <section>
       <>

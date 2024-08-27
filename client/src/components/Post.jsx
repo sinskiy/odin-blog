@@ -10,8 +10,7 @@ import UserContext from "../context/UserContext";
 const Post = ({ post, firePosts, preview = true, showPublish }) => {
   const { token } = useContext(UserContext);
 
-  // TODO: handle error and loading
-  const { data, fire } = useFetch("put");
+  const { data, error, isLoading, fire } = useFetch("put");
   function handlePublishClick() {
     fire(`/posts/${post.id}`, {
       headers: {
@@ -28,6 +27,8 @@ const Post = ({ post, firePosts, preview = true, showPublish }) => {
     }
   }, [data]);
 
+  if (isLoading) return <p>loading...</p>;
+  if (error) return <h1>error: {error}</h1>;
   return (
     <>
       <article className={classes.post}>

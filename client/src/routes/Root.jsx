@@ -8,7 +8,6 @@ function Root() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
 
-  // TODO: use isLoading (in template too)
   const { data, fire } = useFetch();
 
   useEffect(() => {

@@ -4,9 +4,8 @@ import PostPreview from "../components/Post";
 import { Link, useParams } from "react-router-dom";
 
 export default function Posts() {
-  // TODO: error handling
   const { authorId } = useParams();
-  const { data: posts, fire, isLoading } = useFetch();
+  const { data: posts, isLoading, error, fire } = useFetch();
   const fireFunc = () => {
     if (authorId) return fire(`/authors/${authorId}`);
     return fire("/posts");
@@ -15,7 +14,8 @@ export default function Posts() {
     fireFunc();
   }, []);
 
-  if (isLoading) return <p>loading...</p>;
+  if (isLoading) return <h1>loading...</h1>;
+  if (error) return <h1>error: {error}</h1>;
   return (
     <>
       <section>

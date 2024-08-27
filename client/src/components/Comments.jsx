@@ -8,13 +8,13 @@ import UserContext from "../context/UserContext";
 
 const Comments = ({ postId }) => {
   const { user } = useContext(UserContext);
-  // TODO: error handling
-  const { data: comments, fire } = useFetch();
+  const { data: comments, error, fire } = useFetch();
 
   const commentsUrl = `/posts/${postId}/comments`;
   useEffect(() => {
     fire(commentsUrl);
   }, []);
+  if (error) return <h1>error: {error}</h1>;
   return (
     <section className={classes.commentsContainer}>
       <h3>comments</h3>
