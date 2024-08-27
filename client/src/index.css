@@ -105,6 +105,10 @@ h1 {
   width: fit-content;
   margin: auto;
 }
+.text {
+  line-height: 1.5;
+  color: var(--text-variation);
+}
 
 /* dark mode variables */
 @media screen and (prefers-color-scheme: dark) {

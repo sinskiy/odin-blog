@@ -12,7 +12,7 @@ const Post = ({ post, preview = true }) => {
         </time>
       </p>
       {post.description && <p>{post.description}</p>}
-      {!preview && post.text}
+      {!preview && <div className="text">{post.text}</div>}
       {preview && (
         <Link to={`${post.id}`} aria-label="read" className={classes.link} />
       )}
