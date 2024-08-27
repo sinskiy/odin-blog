@@ -43,7 +43,6 @@ export async function postGet(req, res, next) {
     const post = await prisma.post.findUniqueOrThrow({
       where: {
         id: Number(postId),
-        public: true,
       },
       include: {
         author: {

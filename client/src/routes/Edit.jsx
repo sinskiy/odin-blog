@@ -15,6 +15,7 @@ const Edit = () => {
   if (isLoading) return <p>loading...</p>;
   return (
     <section>
+      <h1>edit {post ? post.title : "post"}</h1>
       {post && (
         <Form method="post">
           <InputField label="title" defaultValue={post.title} />

@@ -23,7 +23,7 @@ InputField.propTypes = {
 };
 
 const Input = ({ textarea, ...props }) => {
-  if (textarea) return <textarea {...props}></textarea>;
+  if (textarea) return <textarea rows={15} {...props}></textarea>;
   return <input {...props} />;
 };
 Input.propTypes = {
