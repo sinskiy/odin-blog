@@ -2,7 +2,15 @@ import prisma from "../prisma/index.js";
 
 async function postsGet(req, res, next) {
   try {
-    const posts = await prisma.post.findMany();
+    const posts = await prisma.post.findMany({
+      include: {
+        author: {
+          include: {
+            user: true,
+          },
+        },
+      },
+    });
     res.json(posts);
   } catch (err) {
     next(err);

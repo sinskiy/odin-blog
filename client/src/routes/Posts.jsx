@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
+import PostPreview from "../components/PostPreview";
 
 export default function Posts() {
   // TODO: error handling
-  const { data: posts, error, fire, isLoading } = useFetch();
+  const { data: posts, fire, isLoading } = useFetch();
   useEffect(() => {
     fire("/posts");
   }, []);
@@ -13,7 +14,7 @@ export default function Posts() {
     <section>
       <>
         {posts?.length ? (
-          posts.map((post) => <h1 key={post.id}>{post.title}</h1>)
+          posts.map((post) => <PostPreview key={post.id} post={post} />)
         ) : (
           <p>no posts</p>
         )}

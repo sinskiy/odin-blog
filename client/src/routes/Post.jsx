@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 
-export default function Posts() {
+export default function Post() {
   const { postId } = useParams();
   // TODO: error handling
-  const { data: post, error, fire, isLoading } = useFetch();
+  const { data: post, fire, isLoading } = useFetch();
   useEffect(() => {
     fire(`/${postId}`);
   }, []);

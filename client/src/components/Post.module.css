@@ -1,0 +1,31 @@
+.post {
+  border: 0px #76786b6b;
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+
+  padding: 2rem 0;
+  display: grid;
+  gap: 0.5rem;
+
+  position: relative;
+}
+
+.author {
+  font-style: normal;
+  color: var(--text-variation);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.date {
+  color: var(--text-variation);
+}
+
+.link {
+  position: absolute;
+  inset: 0;
+}
