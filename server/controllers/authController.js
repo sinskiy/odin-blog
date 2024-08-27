@@ -59,7 +59,7 @@ export async function loginPost(req, res, next) {
     }
 
     const match = await bcrypt.compare(password, user.password);
-    console.log(match);
+    console.log(password, user.password, match);
     if (!match) {
       return res.status(400).json({
         error: "Incorrect password.",
