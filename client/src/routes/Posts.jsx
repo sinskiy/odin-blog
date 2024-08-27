@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import PostPreview from "../components/Post";
+import { useParams } from "react-router-dom";
 
 export default function Posts() {
   // TODO: error handling
+  const { authorId } = useParams();
   const { data: posts, fire, isLoading } = useFetch();
   useEffect(() => {
-    fire("/posts");
+    authorId ? fire(`/authors/${authorId}`) : fire("/posts");
   }, []);
 
   if (isLoading) return <p>loading...</p>;
@@ -15,7 +17,7 @@ export default function Posts() {
       <section>
         {posts?.length > 0 ? (
           <>
-            <h1>posts</h1>
+            <h1>{authorId ? "your " : ""}posts</h1>
             {posts.map((post) => (
               <PostPreview key={post.id} post={post} />
             ))}

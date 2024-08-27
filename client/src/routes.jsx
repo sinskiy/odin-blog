@@ -19,6 +19,10 @@ const routes = [
       },
       { index: true, element: <Posts /> },
       {
+        path: "/authors/:authorId",
+        element: <Posts />,
+      },
+      {
         path: "/:postId",
         element: <Post />,
       },
