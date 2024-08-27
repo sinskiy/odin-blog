@@ -16,12 +16,15 @@ const Header = () => {
 
 const Nav = () => {
   const { user, setToken } = useContext(UserContext);
+  function logout() {
+    setToken(null);
+  }
   return (
     <nav className={classes.nav}>
       {user ? (
         <>
           <p>{user.username}</p>
-          <button className="primary" onClick={() => setToken(null)}>
+          <button className="primary" onClick={logout}>
             log out
           </button>
         </>
