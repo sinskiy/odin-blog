@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import classes from "./Post.module.css";
 import { bool, shape, string } from "prop-types";
 
-const PostPreview = ({ post, preview = true }) => {
+const Post = ({ post, preview = true }) => {
   return (
     <article className={classes.post}>
       <h2 className={classes.title}>{post.title}</h2>
@@ -20,7 +20,7 @@ const PostPreview = ({ post, preview = true }) => {
   );
 };
 
-PostPreview.propTypes = {
+Post.propTypes = {
   post: shape({
     title: string.isRequired,
     created_at: string.isRequired,
@@ -28,4 +28,4 @@ PostPreview.propTypes = {
   preview: bool,
 };
 
-export default PostPreview;
+export default Post;
