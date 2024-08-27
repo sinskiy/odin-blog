@@ -3,6 +3,9 @@ import prisma from "../prisma/index.js";
 async function postsGet(req, res, next) {
   try {
     const posts = await prisma.post.findMany({
+      where: {
+        public: true,
+      },
       include: {
         author: {
           include: {
@@ -35,12 +38,12 @@ async function postsPost(req, res, next) {
 }
 
 async function postGet(req, res, next) {
-  // TODO: only published
   const { postId } = req.params;
   try {
     const post = await prisma.post.findUniqueOrThrow({
       where: {
         id: Number(postId),
+        public: true,
       },
       include: {
         author: {
