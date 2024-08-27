@@ -22,13 +22,13 @@ export async function signupPost(req, res, next) {
     }
 
     const hashedPassword = await bcrypt.hash(username, 5);
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         username: username,
         password: hashedPassword,
       },
     });
-    res.sendStatus(200);
+    res.json({ user: user });
   } catch (err) {
     next(err);
   }
@@ -59,6 +59,7 @@ export async function loginPost(req, res, next) {
     }
 
     const match = await bcrypt.compare(password, user.password);
+    console.log(match);
     if (!match) {
       return res.status(400).json({
         error: "Incorrect password.",
