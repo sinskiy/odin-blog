@@ -2,11 +2,8 @@ import { Link } from "react-router-dom";
 import classes from "./Post.module.css";
 import { bool, number, shape, string } from "prop-types";
 import Comments from "./Comments";
-import { useContext } from "react";
-import UserContext from "../context/UserContext";
 
 const Post = ({ post, preview = true }) => {
-  const { user } = useContext(UserContext);
   return (
     <>
       <article className={classes.post}>
@@ -24,7 +21,7 @@ const Post = ({ post, preview = true }) => {
           <Link to={`${post.id}`} aria-label="read" className={classes.link} />
         )}
       </article>
-      {!preview && user && <Comments postId={post.id} />}
+      {!preview && <Comments postId={post.id} />}
     </>
   );
 };

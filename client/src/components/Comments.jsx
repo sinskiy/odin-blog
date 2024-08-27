@@ -1,11 +1,13 @@
 import { number } from "prop-types";
 import classes from "./Comments.module.css";
 import useFetch from "../hooks/useFetch";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
+import UserContext from "../context/UserContext";
 
 const Comments = ({ postId }) => {
+  const { user } = useContext(UserContext);
   // TODO: error handling
   const { data: comments, fire } = useFetch();
 
@@ -16,7 +18,9 @@ const Comments = ({ postId }) => {
   return (
     <section className={classes.commentsContainer}>
       <h3>comments</h3>
-      <NewComment postId={postId} fireComments={() => fire(commentsUrl)} />
+      {user && (
+        <NewComment postId={postId} fireComments={() => fire(commentsUrl)} />
+      )}
       {comments?.length ? (
         <ul role="list" className={classes.comments}>
           {comments.map((comment) => (
