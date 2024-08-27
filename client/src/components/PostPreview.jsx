@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom";
 import classes from "./Post.module.css";
-import { shape, string } from "prop-types";
+import { bool, shape, string } from "prop-types";
 
-const PostPreview = ({ post }) => {
+const PostPreview = ({ post, preview = true }) => {
   return (
     <article className={classes.post}>
-      <cite className={classes.author}>{post.author.user.username}</cite>
       <h2 className={classes.title}>{post.title}</h2>
       <p className={classes.date}>
         <time dateTime={post.created_at}>
@@ -12,32 +12,20 @@ const PostPreview = ({ post }) => {
         </time>
       </p>
       {post.description && <p>{post.description}</p>}
-      <a href={`${post.id}`} aria-label="read" className={classes.link}></a>
+      {!preview && post.text}
+      {preview && (
+        <Link to={`${post.id}`} aria-label="read" className={classes.link} />
+      )}
     </article>
   );
 };
 
-const user = shape({
-  username: string,
-});
-
-// const comment = shape({
-//   id: number,
-//   text: string,
-//   created_at: instanceOf(Date),
-//   user: user,
-// });
-
 PostPreview.propTypes = {
   post: shape({
     title: string.isRequired,
-    description: string,
     created_at: string.isRequired,
-    // comments: arrayOf(comment),
-    author: shape({
-      user: user,
-    }),
   }),
+  preview: bool,
 };
 
 export default PostPreview;

@@ -1,4 +1,5 @@
 import Login from "./routes/Login";
+import Post from "./routes/Post";
 import Posts from "./routes/Posts";
 import Root from "./routes/Root";
 import Signup from "./routes/Signup";
@@ -8,7 +9,6 @@ const routes = [
     path: "/",
     element: <Root />,
     children: [
-      { index: true, element: <Posts /> },
       {
         path: "/signup",
         element: <Signup />,
@@ -16,6 +16,11 @@ const routes = [
       {
         path: "/login",
         element: <Login />,
+      },
+      { index: true, element: <Posts /> },
+      {
+        path: "/:postId",
+        element: <Post />,
       },
     ],
   },
