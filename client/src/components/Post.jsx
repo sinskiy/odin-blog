@@ -16,7 +16,9 @@ const Post = ({ post, preview = true }) => {
             {new Date(post.created_at).toLocaleDateString()}
           </time>
         </p>
-        {post.description && <p>{post.description}</p>}
+        {post.description && (
+          <p className={classes.description}>{post.description}</p>
+        )}
         {!preview && <div className="text">{post.text}</div>}
         {preview && (
           <Link to={`${post.id}`} aria-label="read" className={classes.link} />

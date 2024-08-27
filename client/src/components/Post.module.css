@@ -20,6 +20,11 @@
   color: var(--text-variation);
 }
 
+.description {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
 .link {
   position: absolute;
   inset: 0;

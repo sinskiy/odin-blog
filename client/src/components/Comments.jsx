@@ -26,7 +26,7 @@ const Comments = ({ postId }) => {
           ))}
         </ul>
       ) : (
-        <p>no comments yet. be first!</p>
+        <p style={{ marginTop: "1rem" }}>no comments yet. be first!</p>
       )}
     </section>
   );
