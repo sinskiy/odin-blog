@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import PostPreview from "../components/Post";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Posts() {
   // TODO: error handling
@@ -30,6 +30,9 @@ export default function Posts() {
                 showPublish={authorId !== undefined}
               />
             ))}
+            <div style={{ marginTop: "1rem" }}>
+              {authorId && <Link to="/new">New post</Link>}
+            </div>
           </>
         ) : (
           <h1>no posts</h1>

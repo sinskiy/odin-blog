@@ -29,7 +29,11 @@ const routes = [
       },
       {
         path: "/:postId/edit",
-        element: <Edit />,
+        element: <Edit key={0} />,
+      },
+      {
+        path: "/new",
+        element: <Edit key={1} />,
       },
     ],
   },
