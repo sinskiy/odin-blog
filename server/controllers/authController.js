@@ -94,5 +94,6 @@ export async function authGet(req, res, next) {
 }
 
 export async function userGet(req, res) {
+  // TODO: move to res.json(user)
   res.json({ user: res.locals.user });
 }

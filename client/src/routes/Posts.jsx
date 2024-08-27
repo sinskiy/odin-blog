@@ -11,14 +11,19 @@ export default function Posts() {
 
   if (isLoading) return <p>loading...</p>;
   return (
-    <section>
-      <>
-        {posts?.length ? (
-          posts.map((post) => <PostPreview key={post.id} post={post} />)
+    <>
+      <section>
+        {posts?.length > 0 ? (
+          <>
+            <h1>posts</h1>
+            {posts.map((post) => (
+              <PostPreview key={post.id} post={post} />
+            ))}
+          </>
         ) : (
-          <p>no posts</p>
+          <h1>no posts</h1>
         )}
-      </>
-    </section>
+      </section>
+    </>
   );
 }
